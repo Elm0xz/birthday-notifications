@@ -28,6 +28,8 @@ jobs:
           java-version: '25'
           distribution: 'temurin'
 
+      #TODO setup tests with some test stubs
+
       # Configure Gradle for optimal use in GitHub Actions, including caching of downloaded dependencies.
       # See: https://github.com/gradle/actions/blob/main/setup-gradle/README.md
       - name: Setup Gradle
@@ -61,6 +63,7 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      #TODO check if this is needed
       # Generates and submits a dependency graph, enabling Dependabot Alerts for all project dependencies.
       # See: https://github.com/gradle/actions/blob/main/dependency-submission/README.md
       - name: Generate and submit dependency graph
