@@ -1,5 +1,6 @@
 package com.pretz.birthday
 
+import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
