@@ -18,7 +18,9 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-mail")
     implementation("org.springframework.boot:spring-boot-starter-web")
     testImplementation(kotlin("test-junit5"))
+    testImplementation("org.assertj:assertj-core:3.27.7")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:6.0.3")
+
 }
 
 kotlin {
