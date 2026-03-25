@@ -1,7 +1,7 @@
 services:
   postgres:
     image: postgres:17-alpine
-    container_name: birthday-notifications-db
+    container_name: birthday-notifications-db-dev
     restart: unless-stopped
     environment:
       POSTGRES_DB: ${DB_NAME}
@@ -23,8 +23,8 @@ services:
   app:
     build:
       context: ..
-      dockerfile: ../Dockerfile
-    container_name: birthday-notifications-app
+      dockerfile: Dockerfile
+    container_name: birthday-notifications-app-dev
     restart: unless-stopped
     depends_on:
       postgres:
@@ -34,19 +34,20 @@ services:
       DB_HOST: ${DB_HOST}
       DB_PORT: ${DB_PORT}
       DB_NAME: ${DB_NAME}
+      DB_POOL_SIZE: ${DB_POOL_SIZE}
       DB_USERNAME: ${DB_USERNAME}
       DB_PASSWORD: ${DB_PASSWORD}
       SERVER_PORT: ${SERVER_PORT}
+      CONTAINER_PORT: ${CONTAINER_PORT}
     ports:
       - "${SERVER_PORT}:${CONTAINER_PORT}"
     networks:
       - birthday-network
     healthcheck:
-      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:${CONTAINER_PORT}/actuator/health || exit 1"]
-      interval: 30s
-      timeout: 10s
+      test: ["CMD-SHELL", "curl -fsS http://localhost:${CONTAINER_PORT}/actuator/health || exit 1"]
+      interval: 10s
+      timeout: 5s
       retries: 3
-      start_period: 60s
 
 volumes:
   postgres_data:

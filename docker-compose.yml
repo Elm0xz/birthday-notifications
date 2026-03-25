@@ -1,3 +1,5 @@
+#docker-compose for postgres database
+
 services:
   postgres:
     image: postgres:17-alpine
