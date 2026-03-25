@@ -33,7 +33,7 @@ USER spring:spring
 COPY --from=build /app/build/libs/*.jar app.jar
 
 # Expose application port
-EXPOSE 8080
+EXPOSE ${CONTAINER_PORT}
 
 # Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
