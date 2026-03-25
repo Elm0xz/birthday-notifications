@@ -17,6 +17,10 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-mail")
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-flyway")
+    implementation("org.flywaydb:flyway-database-postgresql")
+    implementation("org.postgresql:postgresql")
     testImplementation(kotlin("test-junit5"))
     testImplementation("org.assertj:assertj-core:3.27.7")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:6.0.3")
